@@ -1,5 +1,5 @@
 import { getConnection } from "../database/database";
-import { SELECT_HEROES } from "../queries";
+import { SELECT_HEROES, SELECT_HERO } from "../queries";
 
 export const findAllHeroes = async (req, res) => {
   try {
@@ -23,7 +23,15 @@ export const findAllHeroes = async (req, res) => {
 
 export const findHeroe = async (req, res) => {
   try {
-    res.json({ data: { name: 'Super man'} });
+    const { id } = req.params;
+    const db = await getConnection();
+    const hero = await db.query(SELECT_HERO, id);
+    if (hero.length <= 0) {
+      return res.status(404)
+        .json({ error: 'Hero not found.' });
+    }
+    const [data] = hero;
+    res.json({ data });
   } catch (error) {
     res.status(500)
       .json({ error: error.message });
