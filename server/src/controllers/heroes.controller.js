@@ -1,9 +1,18 @@
 import { getConnection } from "../database/database";
+import { SELECT_HEROES } from "../queries";
 
 export const findAllHeroes = async (req, res) => {
   try {
     const db = await getConnection();
-    const data = await db.query('SELECT heroes.id, heroes.name, heroes.heroe_type, heroes.condition, heroes.image_url, heroes.cities_id FROM heroes');
+    let condition = ' WHERE 1=1'
+    const { name, cities_id } = req.query;
+    if (name) {
+      condition += ` AND name LIKE ${db.escape(`%${name}%`)}`
+    }
+    if (cities_id) {
+      condition += ` AND cities_id = ${db.escape(cities_id)}`
+    }
+    const data = await db.query(`${SELECT_HEROES}${condition}`);
 
     res.json({ data });
   } catch (error) {
