@@ -1,6 +1,11 @@
+import { getConnection } from "../database/database";
+
 export const findAllHeroes = async (req, res) => {
   try {
-    res.json({ data: [{ name: 'Super man'}] });
+    const db = await getConnection();
+    const data = await db.query('SELECT heroes.id, heroes.name, heroes.heroe_type, heroes.condition, heroes.image_url, heroes.cities_id FROM heroes');
+
+    res.json({ data });
   } catch (error) {
     res.status(500)
       .json({ error: error.message });

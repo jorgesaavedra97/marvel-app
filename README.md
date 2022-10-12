@@ -3,7 +3,21 @@ Marvel app is a system to register all the mutants criatures so that goverments 
 
 ## Run the app
 1. Clone this repo
-`git clone`
+`git clone git@github.com:jorgesaavedra97/marvel-app.git`
 
-2. Intall dependencies and run the dev server
+2. Start your MySQL Service and run these files in your MySQL Server
+`marvel-app/server/data/marvel_universe_user.sql`
+`marvel-app/server/data/marvel_universe.sql`
+
+3. Intall dependencies and run the dev server
 `cd server && npm i && npm run dev`
+
+4. Create the .env file in the marvel-app/server folder with the correct credential values
+```
+HOST=localhost
+DATABASE=marvel_universe
+DB_USER=marvel_universe_user
+PASSWORD=vcUCIS8377@r
+```
+
+5. Test the REST Services using the `marvel-app/HEROES.postman_collection.json` colection
