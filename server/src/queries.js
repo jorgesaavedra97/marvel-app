@@ -9,3 +9,5 @@ export const SELECT_VEHICLE = 'SELECT * FROM vehicles WHERE id = ?';
 export const INSERT_VEHICLE = 'INSERT INTO vehicles SET ?';
 export const UPDATE_VEHICLE = 'UPDATE vehicles SET ? WHERE id = ?';
 export const DELETE_VEHICLE = 'DELETE FROM vehicles WHERE id = ?';
+export const SELECT_CITIES = 'SELECT cities.id, cities.name, cities.countries_id, countries.name as country_name FROM cities, countries WHERE countries.id = cities.countries_id';
+export const SELECT_COUNTRIES = 'SELECT * FROM countries';
