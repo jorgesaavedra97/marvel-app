@@ -1,0 +1,23 @@
+<div class="table-responsive p-20 table-component">
+<table class="table">
+    <thead>
+    <tr *ngFor="let item of tableTitle">
+        <th class=" bdwT-0">{{item.name}}</th>
+        <th class=" bdwT-0">{{item.type}}</th>
+        <th class=" bdwT-0">{{item.condition}}</th>
+        <th class=" bdwT-0">{{item.image}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of data">
+        <td class="fw-600">{{item.name}}</td>
+        <td class="fw-600">{{item.type}}</td>
+        <td class="fw-600">{{item.condition}}</td>
+        <td class="fw-600">{{item.image}}</td>
+        <td class="fw-600">
+            <button [routerLink]="[item.path]">Detail</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
