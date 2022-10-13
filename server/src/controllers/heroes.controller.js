@@ -11,15 +11,14 @@ import {
 export const findAllHeroes = async (req, res) => {
   try {
     const db = await getConnection();
-    let condition = ' WHERE 1=1'
+    let condition = ''
     const { name, cities_id } = req.query;
     if (name) {
-      condition += ` AND name LIKE ${db.escape(`%${name}%`)}`
+      condition += ` AND heroes.name LIKE ${db.escape(`%${name}%`)}`
     }
     if (cities_id) {
-      condition += ` AND cities_id = ${db.escape(cities_id)}`
+      condition += ` AND heroes.cities_id = ${db.escape(cities_id)}`
     }
-    console.log(`${SELECT_HEROES}${condition}`, '`${SELECT_HEROES}${condition}`')
     const data = await db.query(`${SELECT_HEROES}${condition}`);
 
     res.json({ data });
