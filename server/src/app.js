@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 
 // Routes
@@ -13,6 +14,7 @@ const app = express();
 app.set('port', 4000);
 
 // Middlewares
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
 app.use(express.json());
