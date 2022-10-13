@@ -8,6 +8,8 @@ import {
   INSERT_HERO,
   UPDATE_HERO,
   DELETE_HERO,
+  INSERT_POWER_BY_HERO,
+  DELETE_POWER_BY_HERO,
 } from "../queries";
 
 export const findAllHeroes = async (req, res) => {
@@ -88,6 +90,11 @@ export const createHeroe = async (req, res) => {
 
     const db = await getConnection();
     const result = await db.query(INSERT_HERO, getBodyFields(body));
+    if (result.insertId && body.powers_ids) {
+      body.powers_ids.forEach(async (powers_id) => {
+        await db.query(INSERT_POWER_BY_HERO, { heroes_id: result.insertId, powers_id });
+      })
+    }
     const [data] = await db.query(SELECT_HERO, result.insertId);
     res.json({
       data,
@@ -121,7 +128,13 @@ export const updateHeroe = async (req, res) => {
     }
 
     await db.query(UPDATE_HERO, [getBodyFields(body), id]);
-    const [data] = await db.query(SELECT_HERO, id);;
+    if (body.powers_ids) {
+      await db.query(DELETE_POWER_BY_HERO, id);
+      body.powers_ids.forEach(async (powers_id) => {
+        await db.query(INSERT_POWER_BY_HERO, { heroes_id: id, powers_id });
+      })
+    }
+    const [data] = await db.query(SELECT_HERO, id);
     res.json({
       data,
       message: 'Hero updated succesfully.'
