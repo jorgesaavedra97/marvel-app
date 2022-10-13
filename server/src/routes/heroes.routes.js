@@ -4,9 +4,10 @@ import {
     findHeroe,
     createHeroe,
     updateHeroe,
-    deleteHeroe
+    deleteHeroe,
+    findAllVehiclesByHeroe,
+    findAllPowersByHeroe
 } from "./../controllers/heroes.controller";
-import { findAllVehiclesByHeroe } from "./../controllers/vehicles.controller";
 
 const router = Router();
 
@@ -16,5 +17,6 @@ router.post("/", createHeroe);
 router.put("/:id", updateHeroe);
 router.delete("/:id", deleteHeroe);
 router.get("/:id/vehicles", findAllVehiclesByHeroe);
+router.get("/:id/powers", findAllPowersByHeroe);
 
 export default router;

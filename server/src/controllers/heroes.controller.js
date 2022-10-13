@@ -2,6 +2,8 @@ import { getConnection } from "../database/database";
 import { getBodyFields, validateFields } from "../utils";
 import {
   SELECT_HEROES,
+  SELECT_VEHICLES_BY_HEROE,
+  SELECT_POWERS_BY_HEROE,
   SELECT_HERO,
   INSERT_HERO,
   UPDATE_HERO,
@@ -38,6 +40,32 @@ export const findHeroe = async (req, res) => {
         .json({ error: 'Hero not found.' });
     }
     const [data] = hero;
+    res.json({ data });
+  } catch (error) {
+    res.status(500)
+      .json({ error: error.message });
+  }
+};
+
+export const findAllVehiclesByHeroe = async (req, res) => {
+  try {
+    const { id: heroe_id } = req.params;
+    const db = await getConnection();
+    const data = await db.query(SELECT_VEHICLES_BY_HEROE, heroe_id);
+
+    res.json({ data });
+  } catch (error) {
+    res.status(500)
+      .json({ error: error.message });
+  }
+};
+
+export const findAllPowersByHeroe = async (req, res) => {
+  try {
+    const { id: heroe_id } = req.params;
+    const db = await getConnection();
+    const data = await db.query(SELECT_POWERS_BY_HEROE, heroe_id);
+
     res.json({ data });
   } catch (error) {
     res.status(500)
