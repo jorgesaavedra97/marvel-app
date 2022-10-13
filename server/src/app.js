@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 // Routes
 import heroesRoutes from './routes/heroes.routes';
 import vehiclesRoutes from './routes/vehicles.routes';
-import locationsRoutes from './routes/locations.routes';
+import categoriesRoutes from './routes/categories.routes';
 
 const app = express();
 
@@ -20,7 +20,7 @@ app.use(express.json());
 // Routes
 app.use('/api/heroes', heroesRoutes);
 app.use('/api/vehicles', vehiclesRoutes);
-app.use('/api/locations', locationsRoutes);
+app.use('/api/categories', categoriesRoutes);
 app.all('*', (req, res) => {
     res.status(404)
       .json({ error: 'Request not found.' });

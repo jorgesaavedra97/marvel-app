@@ -11,3 +11,4 @@ export const UPDATE_VEHICLE = 'UPDATE vehicles SET ? WHERE id = ?';
 export const DELETE_VEHICLE = 'DELETE FROM vehicles WHERE id = ?';
 export const SELECT_CITIES = 'SELECT cities.id, cities.name, cities.countries_id, countries.name as country_name FROM cities, countries WHERE countries.id = cities.countries_id';
 export const SELECT_COUNTRIES = 'SELECT * FROM countries';
+export const SELECT_POWERS = 'SELECT * FROM powers';
