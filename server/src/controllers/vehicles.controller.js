@@ -1,7 +1,6 @@
 import { getConnection } from "../database/database";
 import {
     SELECT_VEHICLES,
-    SELECT_VEHICLES_BY_HEROE,
     SELECT_VEHICLE,
     INSERT_VEHICLE,
     UPDATE_VEHICLE,
@@ -31,19 +30,6 @@ export const findAllVehicles = async (req, res) => {
   try {
     const db = await getConnection();
     const data = await db.query(SELECT_VEHICLES);
-
-    res.json({ data });
-  } catch (error) {
-    res.status(500)
-      .json({ error: error.message });
-  }
-};
-
-export const findAllVehiclesByHeroe = async (req, res) => {
-  try {
-    const { id: heroe_id } = req.params;
-    const db = await getConnection();
-    const data = await db.query(SELECT_VEHICLES_BY_HEROE, heroe_id);
 
     res.json({ data });
   } catch (error) {
