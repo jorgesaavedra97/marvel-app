@@ -9,11 +9,11 @@ export class AppComponent {
 
   public cardData: {title: string, path: string}[] = [
     {
-      title: 'Heroes',
+      title: 'Mutant List',
       path: ''
     },
     {
-      title: 'Register Heroes',
+      title: 'Register Mutant',
       path: '/register'
     },
     {
