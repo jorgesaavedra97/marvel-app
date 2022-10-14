@@ -8,9 +8,8 @@ Marvel app is a system to register all the mutants criatures so that goverments 
 1. Clone this repo
 `git clone git@github.com:jorgesaavedra97/marvel-app.git`
 
-2. Start your MySQL Service and run these files in your MySQL Server in rhis order
+2. Start your MySQL Service and run this file in your MySQL Server, or optionaly copy and paste its content into any MySQL manager app
     1.  `marvel-app/server/data/marvel_universe.sql`
-    2.  `marvel-app/server/data/marvel_universe_user.sql`
 
 3. Create the `.env` file in the marvel-app/server folder with the correct credential values
 ```
