@@ -1,3 +1,6 @@
+
+![Kapture 2022-10-14 at 08 55 47](https://user-images.githubusercontent.com/25853859/195866214-fcbfd3b1-1482-45d1-8822-8003fd1bbf9d.gif)
+
 # Marvel App
 Marvel app is a system to register all the mutants criatures so that goverments can have a list of then and call them in bad times.
 
